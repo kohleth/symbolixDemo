@@ -26,6 +26,30 @@ And two R objects.
 * `pv.rds` -- the output of `formData.R`. So this script need not be re-run again (running it requires dataset which I have not uploaded to this repository.)
 * `vic.rds` -- dataset containing spatial information for the visualization task in `plotCluster.R`. Again, having this eliminates the need to upload the rather large shape file to this repository.
 
-## Modelling {#model}
+## Modelling{#model}
 Suburbs in VIC are grouped into clusters, and a separate model is trained for each cluster. 
 `trainModel_v1.R` uses the `caret` package to train a `glmnet`, `Cubist`, `SVM`, and `bam` (Big Generalized Additive model with splines), using OOB bootstrap as resampling scheme. The model with the lowest RMSE is the best. 
+
+Once the model is trained, unnecessary parts of the model object is trimmed (removed) so that in deploy time, a smaller object can be loaded.
+
+## P.S.
+Just when I am about to send this, I realized Symbolix made `googleway`, so as a salute to your company. Below is my route to your interview tomorrow.
+```{r,cache=TRUE}
+library(googleway)
+source("mykey.R")
+
+origin="Hallam Station"
+destination="1A/14 Akuna Drive Williamstown North VIC 3016"
+
+df <- google_directions(origin = origin,
+                        destination = destination,
+                        key = mykey,
+                        arrival_time=as.POSIXct("2017-06-21 09:30:00 AEST"),
+                        mode = "transit",
+                        simplify = TRUE)
+pl=data.frame(polyline=df$routes$overview_polyline$points)
+
+google_map(key = mykey, search_box = T) %>%
+  add_polylines(data = pl, polyline = "polyline", stroke_weight = 9)
+```
+
