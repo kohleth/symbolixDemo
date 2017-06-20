@@ -56,4 +56,3 @@ google_map(key = mykey, search_box = T) %>%
 ```
 
 ![route](./route.tiff)
-
