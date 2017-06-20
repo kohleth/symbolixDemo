@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-/data
+/pvdata
 /weather
+/poa_2011
 VICdata.RData
+README.html

@@ -1,0 +1,31 @@
+---
+title: "Symbolix Demo"
+author: "Kohleth Chia"
+date: "20 June 2017"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+The PV system app I made <http://kohleth.shinyapps.io/solarappv2> has a statistical model that predicts PV generation for a given suburb at a given date. This repository contains scripts to update that predictive model to use a new batch of data which I have collected in the past year, as well as more advanced modelling techniques. This project has a fairly strong machine-learning flavour, as opposed to the more traditional statistical analysis.
+
+## Repository Contents
+There are 3 R scripts.
+
+* `formData.R` -- forms the data for modelling. The output is stored in `pv.rds`.
+* `plotCluster.R` -- produces a visualization of the postcode cluster (formed in `formData.R`) as a visual check.
+* `trainModel_v1.R` -- the main script which trains the new models. Also see the [Modelling](#model) section.
+
+And two R objects.
+
+* `pv.rds` -- the output of `formData.R`. So this script need not be re-run again (running it requires dataset which I have not uploaded to this repository.)
+* `vic.rds` -- dataset containing spatial information for the visualization task in `plotCluster.R`. Again, having this eliminates the need to upload the rather large shape file to this repository.
+
+## Modelling {#model}
+Suburbs in VIC are grouped into clusters, and a separate model is trained for each cluster. 
+`trainModel_v1.R` uses the `caret` package to train a `glmnet`, `Cubist`, `SVM`, and `bam` (Big Generalized Additive model with splines), using OOB bootstrap as resampling scheme. The model with the lowest RMSE is the best. 
