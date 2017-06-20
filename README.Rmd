@@ -33,7 +33,7 @@ Suburbs in VIC are grouped into clusters, and a separate model is trained for ea
 Once the model is trained, unnecessary parts of the model object is trimmed (removed) so that in deploy time, a smaller object can be loaded.
 
 ## P.S.
-<<<<<<< HEAD
+
 Just when I am about to send this, I realized Symbolix made `googleway`, so as a salute to your company. Below is my route to your interview tomorrow. (can't really show the interactive map plot on github but you can run the code!)
 
 ```{r,cache=TRUE}
@@ -55,7 +55,3 @@ google_map(key = mykey, search_box = T) %>%
   add_polylines(data = pl, polyline = "polyline", stroke_weight = 9)
 ```
 
-<<<<<<< HEAD
-=======
-![route](./route.tiff)
->>>>>>> cbc73bec64540a8b0e25c2ebccc3d3ed4b3752ff
