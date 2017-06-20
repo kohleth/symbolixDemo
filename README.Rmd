@@ -34,7 +34,7 @@ Once the model is trained, unnecessary parts of the model object is trimmed (rem
 
 ## P.S.
 <<<<<<< HEAD
-Just when I am about to send this, I realized Symbolix made `googleway`, so as a salute to your company. Below is my route to your interview tomorrow. (can't really show this )
+Just when I am about to send this, I realized Symbolix made `googleway`, so as a salute to your company. Below is my route to your interview tomorrow. (can't really show the interactive map plot on github but you can run the code!)
 
 ```{r,cache=TRUE}
 library(googleway)
@@ -55,10 +55,3 @@ google_map(key = mykey, search_box = T) %>%
   add_polylines(data = pl, polyline = "polyline", stroke_weight = 9)
 ```
 
-<<<<<<< HEAD
-![route](./route.tiff)
-=======
-![route](route.tiff)
->>>>>>> a9af341a7ad2b5a52777ad0cb000e88817908960
-
->>>>>>> 05286c7218d95c783dcebc8bb3f769304b386374
