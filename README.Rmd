@@ -55,5 +55,6 @@ google_map(key = mykey, search_box = T) %>%
   add_polylines(data = pl, polyline = "polyline", stroke_weight = 9)
 ```
 
-![route](./route.tiff)
+![route](route.tiff)
+>>>>>>> a9af341a7ad2b5a52777ad0cb000e88817908960
 
